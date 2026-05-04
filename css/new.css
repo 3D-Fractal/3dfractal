@@ -442,4 +442,5 @@ p  { font-size: 0.95rem !important; line-height: 1.7 !important; }
 @media (max-width: 768px) {
   .carousel-btn { display: flex; }
   .carousel-dots { display: flex; }
+  .nav { padding: 10px 16px !important; gap: 12px !important; }
 }
