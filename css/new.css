@@ -314,8 +314,40 @@ p  { font-size: 0.95rem !important; line-height: 1.7 !important; }
 }
 
 @media (max-width: 600px) {
-  .focus-grid     { grid-template-columns: 1fr; }
-  .portfolio-grid { grid-template-columns: 1fr; }
   h1 { font-size: clamp(1.5rem, 7vw, 2rem) !important; }
   .logo-img { height: 38px !important; }
+
+  /* Carousel — focus grid */
+  .focus-grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 14px;
+    padding-bottom: 8px;
+  }
+  .focus-grid::-webkit-scrollbar { display: none; }
+  .focus-card {
+    flex: 0 0 80vw;
+    scroll-snap-align: start;
+  }
+
+  /* Carousel — portfolio grid */
+  .portfolio-grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 14px;
+    padding-bottom: 8px;
+  }
+  .portfolio-grid::-webkit-scrollbar { display: none; }
+  .port-card {
+    flex: 0 0 80vw;
+    scroll-snap-align: start;
+  }
 }
