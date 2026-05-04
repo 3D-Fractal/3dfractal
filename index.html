@@ -650,11 +650,18 @@
       sv: '3D Fractal — Digitala produkter, nischplattformar och innovationskoncept',
       en: '3D Fractal — Digital products, niche platforms and innovation'
     };
+    var _descs = {
+      no: '3D Fractal bygger og investerer i digitale produkter, nisjeplattformer og innovasjonskonsepter med fokus på skalerbare digitale eiendeler og langsiktig verdi.',
+      sv: '3D Fractal bygger och investerar i digitala produkter, nischplattformar och innovationskoncept med fokus på skalbara digitala tillgångar och långsiktigt värde.',
+      en: '3D Fractal builds and invests in digital products, niche platforms and innovation concepts with a focus on scalable digital assets and long-term value.'
+    };
 
     function setLang(lang) {
       document.documentElement.setAttribute('data-lang', lang);
       document.documentElement.setAttribute('lang', lang === 'no' ? 'no' : lang === 'sv' ? 'sv' : 'en');
       document.title = _titles[lang] || _titles.en;
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute('content', _descs[lang] || _descs.en);
       localStorage.setItem('3df-lang', lang);
       ['no','sv','en'].forEach(function(l) {
         document.getElementById('btn' + l.charAt(0).toUpperCase() + l.slice(1)).classList.toggle('active', l === lang);
@@ -664,6 +671,8 @@
     (function () {
       var lang = document.documentElement.getAttribute('data-lang') || 'no';
       document.title = _titles[lang] || _titles.en;
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute('content', _descs[lang] || _descs.en);
       ['no','sv','en'].forEach(function(l) {
         document.getElementById('btn' + l.charAt(0).toUpperCase() + l.slice(1)).classList.toggle('active', l === lang);
       });
