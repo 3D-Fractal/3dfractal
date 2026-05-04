@@ -1,21 +1,30 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="no" data-lang="no">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>3D Fractal — Digitale produkter, nisjeplattformer og innovasjon</title>
   <meta name="description" content="3D Fractal bygger og investerer i digitale produkter, nisjeplattformer og innovasjonskonsepter. Basert i Norge." />
-  <link rel="stylesheet" href="css/style.css?v=3" />
-  <link rel="stylesheet" href="css/new.css?v=3" />
+  <script>
+    /* Runs before CSS — sets lang immediately to prevent flash of all languages */
+    (function () {
+      var saved = localStorage.getItem('3df-lang');
+      var isEu  = location.hostname.includes('3dfractal.eu');
+      var lang  = saved || (isEu ? 'en' : 'no');
+      document.documentElement.setAttribute('data-lang', lang);
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css?v=4" />
+  <link rel="stylesheet" href="css/new.css?v=4" />
   <style>
-    /* Language switching */
+    /* Language switching — driven by data-lang on <html> */
     .lang-en, .lang-sv { display: none !important; }
-    body.en .lang-en   { display: revert !important; }
-    body.en .lang-no,
-    body.en .lang-sv   { display: none !important; }
-    body.sv .lang-sv   { display: revert !important; }
-    body.sv .lang-no,
-    body.sv .lang-en   { display: none !important; }
+    [data-lang="en"] .lang-en { display: revert !important; }
+    [data-lang="en"] .lang-no,
+    [data-lang="en"] .lang-sv { display: none !important; }
+    [data-lang="sv"] .lang-sv { display: revert !important; }
+    [data-lang="sv"] .lang-no,
+    [data-lang="sv"] .lang-en { display: none !important; }
 
     /* Language switcher */
     .lang-switcher {
@@ -117,6 +126,7 @@
           Vi bygger digitale produkter,<br>
           nisjeplattformer<br>
           og innovasjons<span class="accent">konsepter.</span>
+
         </h1>
         <h1 class="hero-title lang-sv">
           Vi bygger digitala produkter,<br>
@@ -284,9 +294,9 @@
           <p class="lang-sv">Plattformen är byggd för att hjälpa användare att snabbt förstå ett ämne och fortsätta mot relevanta produkter, tjänster eller upplevelser.</p>
           <p class="lang-en">The platform is designed to help users understand a topic quickly and continue toward relevant products, services or experiences.</p>
 
-          <p class="port-strategy lang-no">One-sliders er 3D Fractals viktigste skalerbare digitale eiendel, bygget for globalt nedslagsfelt og langsiktig innholdsverdi.</p>
-          <p class="port-strategy lang-sv">One-sliders är 3D Fractals viktigaste skalbara digitala tillgång, byggd för global räckvidd och långsiktigt innehållsvärde.</p>
-          <p class="port-strategy lang-en">One-sliders is 3D Fractal's main scalable digital asset, built for global reach and long-term content value.</p>
+          <p class="port-strategy lang-no">One-sliders er 3D Fractals viktigste skalerbare digitale eiendel, bygget for global rekkevidde, affiliate-potensial og langsiktig innholdsverdi.</p>
+          <p class="port-strategy lang-sv">One-sliders är 3D Fractals viktigaste skalbara digitala tillgång, byggd för global räckvidd, affiliatepotential och långsiktigt innehållsvärde.</p>
+          <p class="port-strategy lang-en">One-sliders is 3D Fractal's main scalable digital asset, built for global reach, affiliate potential and long-term content value.</p>
 
           <a href="https://one-sliders.com" target="_blank" rel="noopener" class="btn btn-primary lang-no">
             Besøk One-sliders.com
@@ -625,17 +635,17 @@
   <script src="js/main.js"></script>
   <script>
     function setLang(lang) {
-      document.body.classList.remove('en', 'sv');
-      if (lang !== 'no') document.body.classList.add(lang);
+      document.documentElement.setAttribute('data-lang', lang);
       document.getElementById('btnNo').classList.toggle('active', lang === 'no');
       document.getElementById('btnSv').classList.toggle('active', lang === 'sv');
       document.getElementById('btnEn').classList.toggle('active', lang === 'en');
       localStorage.setItem('3df-lang', lang);
     }
     (function () {
-      var saved = localStorage.getItem('3df-lang');
-      var isEuDomain = window.location.hostname.includes('3dfractal.eu');
-      setLang(saved || (isEuDomain ? 'en' : 'no'));
+      var lang = document.documentElement.getAttribute('data-lang') || 'no';
+      document.getElementById('btnNo').classList.toggle('active', lang === 'no');
+      document.getElementById('btnSv').classList.toggle('active', lang === 'sv');
+      document.getElementById('btnEn').classList.toggle('active', lang === 'en');
     })();
   </script>
 </body>
