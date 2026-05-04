@@ -345,7 +345,7 @@ p  { font-size: 0.95rem !important; line-height: 1.7 !important; }
     flex: 0 0 calc(100vw - 48px) !important;
     width: calc(100vw - 48px) !important;
     min-width: 0 !important;
-    scroll-snap-align: start !important;
+    scroll-snap-align: center !important;
   }
 
   /* Carousel — portfolio grid */
@@ -370,7 +370,7 @@ p  { font-size: 0.95rem !important; line-height: 1.7 !important; }
     flex: 0 0 calc(100vw - 48px) !important;
     width: calc(100vw - 48px) !important;
     min-width: 0 !important;
-    scroll-snap-align: start !important;
+    scroll-snap-align: center !important;
   }
 }
 
