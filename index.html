@@ -221,7 +221,11 @@
         <h2 class="lang-en">Four focus areas.</h2>
       </div>
 
-      <div class="focus-grid">
+      <div class="carousel-wrapper">
+        <button class="carousel-btn carousel-prev" onclick="dfCarouselPrev('focusGrid')" aria-label="Forrige">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <div class="focus-grid" id="focusGrid">
 
         <div class="focus-card">
           <div class="focus-icon">
@@ -279,7 +283,17 @@
           <p class="lang-en">Investing in selected companies and concepts aligned with product thinking, innovation and long-term value creation.</p>
         </div>
 
-      </div>
+        </div><!-- /focus-grid -->
+        <button class="carousel-btn carousel-next" onclick="dfCarouselNext('focusGrid')" aria-label="Neste">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <div class="carousel-dots" id="focusDots">
+          <span class="carousel-dot active"></span>
+          <span class="carousel-dot"></span>
+          <span class="carousel-dot"></span>
+          <span class="carousel-dot"></span>
+        </div>
+      </div><!-- /carousel-wrapper -->
     </div>
   </section>
 
@@ -348,7 +362,11 @@
       </div>
 
       <!-- Portfolio grid -->
-      <div class="portfolio-grid">
+      <div class="carousel-wrapper">
+        <button class="carousel-btn carousel-prev" onclick="dfCarouselPrev('portfolioGrid')" aria-label="Forrige">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <div class="portfolio-grid" id="portfolioGrid">
 
         <div class="port-card">
           <span class="port-tag port-tag--explore lang-no">Utforskning</span>
@@ -406,7 +424,17 @@
           <p class="port-note lang-en">See <a href="https://accelerate-iver.com/no/" target="_blank" rel="noopener">accelerate-iver.com</a></p>
         </div>
 
-      </div>
+        </div><!-- /portfolio-grid -->
+        <button class="carousel-btn carousel-next" onclick="dfCarouselNext('portfolioGrid')" aria-label="Neste">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <div class="carousel-dots" id="portfolioDots">
+          <span class="carousel-dot active"></span>
+          <span class="carousel-dot"></span>
+          <span class="carousel-dot"></span>
+          <span class="carousel-dot"></span>
+        </div>
+      </div><!-- /carousel-wrapper -->
     </div>
   </section>
 
@@ -715,6 +743,42 @@
     (function () {
       var lang = document.documentElement.getAttribute('data-lang') || 'no';
       setLang(lang);
+    })();
+
+    // Carousel
+    function dfCarouselNext(id) {
+      var el = document.getElementById(id);
+      var card = el && el.firstElementChild;
+      if (!card) return;
+      el.scrollBy({ left: card.offsetWidth + 14, behavior: 'smooth' });
+    }
+    function dfCarouselPrev(id) {
+      var el = document.getElementById(id);
+      var card = el && el.firstElementChild;
+      if (!card) return;
+      el.scrollBy({ left: -(card.offsetWidth + 14), behavior: 'smooth' });
+    }
+    (function () {
+      var pairs = [['focusGrid','focusDots'],['portfolioGrid','portfolioDots']];
+      pairs.forEach(function(p) {
+        var grid = document.getElementById(p[0]);
+        var dotsEl = document.getElementById(p[1]);
+        if (!grid || !dotsEl) return;
+        var dots = dotsEl.querySelectorAll('.carousel-dot');
+        dots.forEach(function(dot, i) {
+          dot.addEventListener('click', function() {
+            var card = grid.firstElementChild;
+            if (!card) return;
+            grid.scrollTo({ left: i * (card.offsetWidth + 14), behavior: 'smooth' });
+          });
+        });
+        grid.addEventListener('scroll', function() {
+          var card = grid.firstElementChild;
+          if (!card) return;
+          var idx = Math.round(grid.scrollLeft / (card.offsetWidth + 14));
+          dots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+        }, { passive: true });
+      });
     })();
   </script>
 </body>

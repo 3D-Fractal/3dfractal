@@ -373,3 +373,47 @@ p  { font-size: 0.95rem !important; line-height: 1.7 !important; }
     scroll-snap-align: start !important;
   }
 }
+
+/* ── Carousel controls ───────────────────────────────────────── */
+.carousel-wrapper { position: relative; }
+
+.carousel-btn {
+  display: none;
+  position: absolute;
+  top: 44%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+  color: #1e293b;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-prev { left: 0; }
+.carousel-next { right: 0; }
+
+.carousel-dots { display: none; justify-content: center; gap: 8px; padding-top: 16px; }
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.carousel-dot.active {
+  background: var(--color-primary);
+  transform: scale(1.3);
+}
+
+@media (max-width: 768px) {
+  .carousel-btn { display: flex; }
+  .carousel-dots { display: flex; }
+}
