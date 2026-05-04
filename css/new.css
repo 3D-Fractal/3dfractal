@@ -173,7 +173,7 @@ p  { font-size: 0.95rem !important; line-height: 1.7 !important; }
 /* Grid cards */
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
 
