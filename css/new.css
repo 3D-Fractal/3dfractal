@@ -2,6 +2,26 @@
    3D Fractal — New sections (product & investment site)
    ============================================================ */
 
+/* ── Nav end (lang switcher + CTA) ──────────────────────────── */
+.nav-end {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .nav-end {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+  .nav-cta {
+    font-size: 0.78rem !important;
+    padding: 6px 14px !important;
+  }
+}
+
 /* ── Logo overrides ─────────────────────────────────────────── */
 .logo-img {
   height: 190px !important;
