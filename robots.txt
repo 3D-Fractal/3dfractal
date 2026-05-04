@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://3dfractal.no/sitemap.xml
