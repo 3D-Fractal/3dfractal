@@ -1,0 +1,321 @@
+/* ============================================================
+   3D Fractal — New sections (product & investment site)
+   ============================================================ */
+
+/* ── Logo overrides ─────────────────────────────────────────── */
+.logo-img {
+  height: 56px !important;
+  width: auto !important;
+  max-width: 220px !important;
+  object-fit: contain !important;
+}
+.logo-img--footer {
+  height: 40px !important;
+  opacity: 0.85;
+}
+
+/* ── Typography scale (override inline) ─────────────────────── */
+h1 { font-size: clamp(2rem, 3.2vw, 3.6rem) !important; line-height: 1.1 !important; }
+h2 { font-size: clamp(1.6rem, 2.2vw, 2.6rem) !important; }
+h3 { font-size: 1.1rem !important; }
+p  { font-size: 0.95rem !important; line-height: 1.7 !important; }
+.hero-copy { font-size: 1.05rem !important; }
+
+/* ── Section intro ───────────────────────────────────────────── */
+.section-intro {
+  max-width: 680px;
+  margin-bottom: 48px;
+}
+.section-intro h2 { margin-bottom: 12px; }
+.section-sub {
+  font-size: 1rem !important;
+  color: var(--color-text-muted);
+  margin-top: 12px;
+  max-width: 600px;
+}
+
+/* ── What we do ─────────────────────────────────────────────── */
+.what-we-do {
+  padding: 72px 0;
+  background: #fff;
+}
+
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.focus-card {
+  padding: 28px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.focus-card:hover {
+  border-color: rgba(0,91,255,0.3);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+.focus-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(0,91,255,0.08);
+  display: grid;
+  place-items: center;
+  color: var(--color-primary);
+  margin-bottom: 18px;
+}
+.focus-card h3 { margin-bottom: 10px; }
+
+/* ── Portfolio ───────────────────────────────────────────────── */
+.portfolio-section {
+  padding: 80px 0;
+  background: var(--color-bg);
+}
+
+/* Featured item */
+.portfolio-featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 28px;
+  background: #fff;
+}
+
+.portfolio-featured-img {
+  position: relative;
+  min-height: 340px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #07111F 0%, #101A2B 60%, rgba(0,91,255,0.4) 100%);
+}
+.portfolio-featured-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.portfolio-featured-body {
+  padding: 48px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+.portfolio-featured-body h2 {
+  font-size: clamp(1.8rem, 2.5vw, 2.8rem) !important;
+  margin: 4px 0 0;
+}
+.port-lead {
+  font-size: 1.05rem !important;
+  color: var(--color-text) !important;
+  font-weight: 500;
+}
+.port-strategy {
+  font-style: italic;
+  color: var(--color-text-muted) !important;
+  border-left: 3px solid var(--color-primary);
+  padding-left: 14px;
+  margin-top: 4px;
+}
+
+/* Portfolio tags */
+.port-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+}
+.port-tag--active   { background: rgba(34,197,94,0.12); color: #16a34a; }
+.port-tag--explore  { background: rgba(245,158,11,0.12); color: #b45309; }
+.port-tag--selective{ background: rgba(0,91,255,0.10);  color: var(--color-primary); }
+.port-tag--invest   { background: rgba(99,102,241,0.12); color: #4f46e5; }
+
+/* Grid cards */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.port-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.port-card:hover {
+  border-color: rgba(0,91,255,0.25);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+.port-card h3 { margin: 0; }
+.port-note {
+  font-size: 0.85rem !important;
+  color: var(--color-text-muted) !important;
+  border-top: 1px solid var(--color-border);
+  padding-top: 10px;
+  margin-top: 4px;
+}
+
+/* ── About ───────────────────────────────────────────────────── */
+.about-section {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-text { display: flex; flex-direction: column; gap: 16px; }
+.about-text .section-label { margin-bottom: 4px; }
+.about-text h2 { margin-bottom: 4px; }
+
+.credentials {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 32px;
+}
+
+.credentials h4 {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0 0 20px;
+}
+
+.cred-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cred-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.cred-list li svg { color: var(--color-primary); flex-shrink: 0; }
+
+/* ── Investments ─────────────────────────────────────────────── */
+.investments-section {
+  padding: 80px 0;
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+}
+.investments-section > .container { display: flex; flex-direction: column; gap: 32px; }
+.investments-section h2 { margin: 8px 0 0; }
+
+.invest-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  max-width: 720px;
+}
+.invest-card-inner {
+  padding: 36px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: start;
+}
+.invest-card h3 { margin: 8px 0 12px; }
+
+.invest-meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 16px;
+  align-content: start;
+  min-width: 160px;
+}
+.invest-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.invest-value {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* ── Footer simple ───────────────────────────────────────────── */
+.footer-simple {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-links-col h4 {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin: 0 0 16px;
+}
+.footer-links-col ul { display: flex; flex-direction: column; gap: 10px; }
+.footer-links-col ul a {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.65);
+  transition: color 0.2s;
+}
+.footer-links-col ul a:hover { color: #fff; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .focus-grid     { grid-template-columns: repeat(2, 1fr); }
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .portfolio-featured { grid-template-columns: 1fr; }
+  .portfolio-featured-img { min-height: 260px; }
+  .footer-simple  { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .invest-card-inner { grid-template-columns: 1fr; gap: 24px; }
+  .portfolio-featured-body { padding: 32px 28px; }
+  .footer-simple { grid-template-columns: 1fr; gap: 32px; }
+  h1 { font-size: clamp(1.6rem, 6vw, 2.4rem) !important; }
+  .logo-img { height: 44px !important; }
+}
+
+@media (max-width: 600px) {
+  .focus-grid     { grid-template-columns: 1fr; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  h1 { font-size: clamp(1.5rem, 7vw, 2rem) !important; }
+  .logo-img { height: 38px !important; }
+}
