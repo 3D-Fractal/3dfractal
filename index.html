@@ -4,7 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>3D Fractal — Digitale produkter, nisjeplattformer og innovasjon</title>
-  <meta name="description" content="3D Fractal bygger og investerer i digitale produkter, nisjeplattformer og innovasjonskonsepter. Basert i Norge." />
+  <meta name="description" content="3D Fractal bygger og investerer i digitale produkter, nisjeplattformer og innovasjonskonsepter med fokus på skalerbare digitale eiendeler og langsiktig verdi." />
+  <meta name="keywords" content="3D Fractal, digitale produkter, nisjeplattformer, innovasjon, investering, produktutvikling, digitale eiendeler, One-sliders, Custom HiFi, Family Resource Planning" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://3dfractal.no/" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="3D Fractal" />
+  <meta property="og:url" content="https://3dfractal.no/" />
+  <meta property="og:title" content="3D Fractal — Digitale produkter, nisjeplattformer og innovasjon" />
+  <meta property="og:description" content="3D Fractal bygger og investerer i digitale produkter, nisjeplattformer og innovasjonskonsepter med fokus på skalerbare digitale eiendeler og langsiktig verdi." />
+  <meta property="og:image" content="https://3dfractal.no/images/hero-dashboard.jpg" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="3D Fractal — Digitale produkter, nisjeplattformer og innovasjon" />
+  <meta name="twitter:description" content="3D Fractal bygger og investerer i digitale produkter, nisjeplattformer og innovasjonskonsepter med fokus på skalerbare digitale eiendeler og langsiktig verdi." />
+  <meta name="twitter:image" content="https://3dfractal.no/images/hero-dashboard.jpg" />
   <script>
     /* Runs before anything renders — sets data-lang so CSS hides wrong languages immediately */
     (function () {
@@ -647,7 +662,7 @@
   <script>
     var _titles = {
       no: '3D Fractal — Digitale produkter, nisjeplattformer og innovasjon',
-      sv: '3D Fractal — Digitala produkter, nischplattformar och innovationskoncept',
+      sv: '3D Fractal — Digitala produkter, nischplattformar och innovation',
       en: '3D Fractal — Digital products, niche platforms and innovation'
     };
     var _descs = {
@@ -655,13 +670,37 @@
       sv: '3D Fractal bygger och investerar i digitala produkter, nischplattformar och innovationskoncept med fokus på skalbara digitala tillgångar och långsiktigt värde.',
       en: '3D Fractal builds and invests in digital products, niche platforms and innovation concepts with a focus on scalable digital assets and long-term value.'
     };
+    var _keywords = {
+      no: '3D Fractal, digitale produkter, nisjeplattformer, innovasjon, investering, produktutvikling, digitale eiendeler, One-sliders, Custom HiFi, Family Resource Planning',
+      sv: '3D Fractal, digitala produkter, nischplattformar, innovation, investering, produktutveckling, digitala tillgångar, One-sliders, Custom HiFi, Family Resource Planning',
+      en: '3D Fractal, digital products, niche platforms, innovation, investment, product development, digital assets, One-sliders, Custom HiFi, Family Resource Planning'
+    };
+    var _canonicals = {
+      no: 'https://3dfractal.no/',
+      sv: 'https://3dfractal.no/?lang=sv',
+      en: 'https://3dfractal.no/?lang=en'
+    };
+
+    function _setMeta(selector, attr, value) {
+      var el = document.querySelector(selector);
+      if (el) el.setAttribute(attr, value);
+    }
 
     function setLang(lang) {
       document.documentElement.setAttribute('data-lang', lang);
       document.documentElement.setAttribute('lang', lang === 'no' ? 'no' : lang === 'sv' ? 'sv' : 'en');
-      document.title = _titles[lang] || _titles.en;
-      var metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) metaDesc.setAttribute('content', _descs[lang] || _descs.en);
+      var t = _titles[lang] || _titles.no;
+      var d = _descs[lang] || _descs.no;
+      var c = _canonicals[lang] || _canonicals.no;
+      document.title = t;
+      _setMeta('meta[name="description"]',        'content', d);
+      _setMeta('meta[name="keywords"]',           'content', _keywords[lang] || _keywords.no);
+      _setMeta('meta[property="og:title"]',       'content', t);
+      _setMeta('meta[property="og:description"]', 'content', d);
+      _setMeta('meta[property="og:url"]',         'content', c);
+      _setMeta('meta[name="twitter:title"]',      'content', t);
+      _setMeta('meta[name="twitter:description"]','content', d);
+      _setMeta('link[rel="canonical"]',           'href',    c);
       localStorage.setItem('3df-lang', lang);
       ['no','sv','en'].forEach(function(l) {
         document.getElementById('btn' + l.charAt(0).toUpperCase() + l.slice(1)).classList.toggle('active', l === lang);
@@ -670,12 +709,7 @@
     // Sync on load
     (function () {
       var lang = document.documentElement.getAttribute('data-lang') || 'no';
-      document.title = _titles[lang] || _titles.en;
-      var metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) metaDesc.setAttribute('content', _descs[lang] || _descs.en);
-      ['no','sv','en'].forEach(function(l) {
-        document.getElementById('btn' + l.charAt(0).toUpperCase() + l.slice(1)).classList.toggle('active', l === lang);
-      });
+      setLang(lang);
     })();
   </script>
 </body>
