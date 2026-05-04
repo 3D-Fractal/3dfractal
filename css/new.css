@@ -2,6 +2,12 @@
    3D Fractal — New sections (product & investment site)
    ============================================================ */
 
+/* ── Scroll offset for sticky header ────────────────────────── */
+section[id] { scroll-margin-top: 240px; }
+
+@media (max-width: 900px) { section[id] { scroll-margin-top: 100px; } }
+@media (max-width: 768px) { section[id] { scroll-margin-top: 180px; } }
+
 /* ── Nav end (lang switcher + CTA) ──────────────────────────── */
 .nav-end {
   display: flex;
