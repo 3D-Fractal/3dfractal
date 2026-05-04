@@ -342,8 +342,8 @@ p  { font-size: 0.95rem !important; line-height: 1.7 !important; }
   }
   .focus-grid::-webkit-scrollbar { display: none; }
   .focus-card {
-    flex: 0 0 82vw !important;
-    width: 82vw !important;
+    flex: 0 0 calc(100vw - 48px) !important;
+    width: calc(100vw - 48px) !important;
     min-width: 0 !important;
     scroll-snap-align: start !important;
   }
@@ -367,8 +367,8 @@ p  { font-size: 0.95rem !important; line-height: 1.7 !important; }
   }
   .portfolio-grid::-webkit-scrollbar { display: none; }
   .port-card {
-    flex: 0 0 82vw !important;
-    width: 82vw !important;
+    flex: 0 0 calc(100vw - 48px) !important;
+    width: calc(100vw - 48px) !important;
     min-width: 0 !important;
     scroll-snap-align: start !important;
   }
