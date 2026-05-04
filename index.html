@@ -9,8 +9,15 @@
     /* Runs before anything renders — sets data-lang so CSS hides wrong languages immediately */
     (function () {
       var saved = localStorage.getItem('3df-lang');
-      var isEu  = location.hostname.indexOf('3dfractal.eu') !== -1;
-      document.documentElement.setAttribute('data-lang', saved || (isEu ? 'en' : 'no'));
+      if (saved) {
+        document.documentElement.setAttribute('data-lang', saved);
+        return;
+      }
+      var bl = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+      var lang = 'en';
+      if (bl === 'no' || bl.slice(0,3) === 'nb-' || bl.slice(0,3) === 'nn-' || bl.slice(0,2) === 'no') lang = 'no';
+      else if (bl.slice(0,2) === 'sv') lang = 'sv';
+      document.documentElement.setAttribute('data-lang', lang);
     })();
   </script>
   <link rel="stylesheet" href="css/style.css?v=5" />
@@ -624,9 +631,13 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 3D Fractal AS. Norway.</span>
+        <span class="lang-no">© 2026 3D Fractal AS. Norge.</span>
+        <span class="lang-sv">© 2026 3D Fractal AS. Norge.</span>
+        <span class="lang-en">© 2026 3D Fractal AS. Norway.</span>
         <div class="footer-bottom-links">
-          <a href="#">Privacy</a>
+          <a href="#" class="lang-no">Personvern</a>
+          <a href="#" class="lang-sv">Integritet</a>
+          <a href="#" class="lang-en">Privacy</a>
         </div>
       </div>
     </div>
@@ -634,16 +645,25 @@
 
   <script src="js/main.js"></script>
   <script>
+    var _titles = {
+      no: '3D Fractal — Digitale produkter, nisjeplattformer og innovasjon',
+      sv: '3D Fractal — Digitala produkter, nischplattformar och innovationskoncept',
+      en: '3D Fractal — Digital products, niche platforms and innovation'
+    };
+
     function setLang(lang) {
       document.documentElement.setAttribute('data-lang', lang);
+      document.documentElement.setAttribute('lang', lang === 'no' ? 'no' : lang === 'sv' ? 'sv' : 'en');
+      document.title = _titles[lang] || _titles.en;
       localStorage.setItem('3df-lang', lang);
       ['no','sv','en'].forEach(function(l) {
         document.getElementById('btn' + l.charAt(0).toUpperCase() + l.slice(1)).classList.toggle('active', l === lang);
       });
     }
-    // Sync active button state on load
+    // Sync on load
     (function () {
       var lang = document.documentElement.getAttribute('data-lang') || 'no';
+      document.title = _titles[lang] || _titles.en;
       ['no','sv','en'].forEach(function(l) {
         document.getElementById('btn' + l.charAt(0).toUpperCase() + l.slice(1)).classList.toggle('active', l === lang);
       });
