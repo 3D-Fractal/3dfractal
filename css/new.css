@@ -313,56 +313,61 @@ p  { font-size: 0.95rem !important; line-height: 1.7 !important; }
   .logo-img { height: 44px !important; }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   h1 { font-size: clamp(1.5rem, 7vw, 2rem) !important; }
   .logo-img { height: 38px !important; }
 
-  /* Clip sections so the carousel doesn't spill into page scroll */
+  /* Clip sections so the carousel doesn't cause horizontal page scroll */
   .what-we-do,
   .portfolio-section { overflow: hidden; }
 
   /* Carousel — focus grid */
   .focus-grid {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    grid-template-columns: none !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    scroll-snap-type: x mandatory !important;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    gap: 14px;
-    /* break out of container padding so first card sits flush */
-    margin-left: -24px;
-    margin-right: -24px;
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 12px;
+    gap: 14px !important;
+    margin-left: -24px !important;
+    margin-right: -24px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    padding-bottom: 16px !important;
   }
   .focus-grid::-webkit-scrollbar { display: none; }
   .focus-card {
-    flex: 0 0 82vw;
-    min-width: 0;
-    scroll-snap-align: start;
+    flex: 0 0 82vw !important;
+    width: 82vw !important;
+    min-width: 0 !important;
+    scroll-snap-align: start !important;
   }
 
   /* Carousel — portfolio grid */
   .portfolio-grid {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    grid-template-columns: none !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    scroll-snap-type: x mandatory !important;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    gap: 14px;
-    margin-left: -24px;
-    margin-right: -24px;
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 12px;
+    gap: 14px !important;
+    margin-left: -24px !important;
+    margin-right: -24px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    padding-bottom: 16px !important;
   }
   .portfolio-grid::-webkit-scrollbar { display: none; }
   .port-card {
-    flex: 0 0 82vw;
-    min-width: 0;
-    scroll-snap-align: start;
+    flex: 0 0 82vw !important;
+    width: 82vw !important;
+    min-width: 0 !important;
+    scroll-snap-align: start !important;
   }
 }
