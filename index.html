@@ -6,25 +6,25 @@
   <title>3D Fractal — Digitale produkter, nisjeplattformer og innovasjon</title>
   <meta name="description" content="3D Fractal bygger og investerer i digitale produkter, nisjeplattformer og innovasjonskonsepter. Basert i Norge." />
   <script>
-    /* Runs before CSS — sets lang immediately to prevent flash of all languages */
+    /* Runs before anything renders — sets data-lang so CSS hides wrong languages immediately */
     (function () {
       var saved = localStorage.getItem('3df-lang');
-      var isEu  = location.hostname.includes('3dfractal.eu');
-      var lang  = saved || (isEu ? 'en' : 'no');
-      document.documentElement.setAttribute('data-lang', lang);
+      var isEu  = location.hostname.indexOf('3dfractal.eu') !== -1;
+      document.documentElement.setAttribute('data-lang', saved || (isEu ? 'en' : 'no'));
     })();
   </script>
-  <link rel="stylesheet" href="css/style.css?v=4" />
-  <link rel="stylesheet" href="css/new.css?v=4" />
+  <link rel="stylesheet" href="css/style.css?v=5" />
+  <link rel="stylesheet" href="css/new.css?v=5" />
   <style>
-    /* Language switching — driven by data-lang on <html> */
-    .lang-en, .lang-sv { display: none !important; }
-    [data-lang="en"] .lang-en { display: revert !important; }
-    [data-lang="en"] .lang-no,
-    [data-lang="en"] .lang-sv { display: none !important; }
-    [data-lang="sv"] .lang-sv { display: revert !important; }
-    [data-lang="sv"] .lang-no,
-    [data-lang="sv"] .lang-en { display: none !important; }
+    /*
+      Language switching.
+      Hide each language class when that language is NOT selected.
+      Works even when elements have inline style="display:..." because
+      !important in author stylesheet beats non-!important inline styles.
+    */
+    html:not([data-lang="no"]) .lang-no { display: none !important; }
+    html:not([data-lang="sv"]) .lang-sv { display: none !important; }
+    html:not([data-lang="en"]) .lang-en { display: none !important; }
 
     /* Language switcher */
     .lang-switcher {
@@ -636,16 +636,17 @@
   <script>
     function setLang(lang) {
       document.documentElement.setAttribute('data-lang', lang);
-      document.getElementById('btnNo').classList.toggle('active', lang === 'no');
-      document.getElementById('btnSv').classList.toggle('active', lang === 'sv');
-      document.getElementById('btnEn').classList.toggle('active', lang === 'en');
       localStorage.setItem('3df-lang', lang);
+      ['no','sv','en'].forEach(function(l) {
+        document.getElementById('btn' + l.charAt(0).toUpperCase() + l.slice(1)).classList.toggle('active', l === lang);
+      });
     }
+    // Sync active button state on load
     (function () {
       var lang = document.documentElement.getAttribute('data-lang') || 'no';
-      document.getElementById('btnNo').classList.toggle('active', lang === 'no');
-      document.getElementById('btnSv').classList.toggle('active', lang === 'sv');
-      document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+      ['no','sv','en'].forEach(function(l) {
+        document.getElementById('btn' + l.charAt(0).toUpperCase() + l.slice(1)).classList.toggle('active', l === lang);
+      });
     })();
   </script>
 </body>
