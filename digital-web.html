@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="no" data-lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital web og innovasjon — 3D Fractal</title>
+  <meta name="description" content="3D Fractal hjelper utvalgte partnere med å gjøre ideer om til fungerende digitale produkter og nettsider — med fokus på utfall, brukere og strukturert gjennomføring." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://3dfractal.no/digital-web.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="3D Fractal" />
+  <meta property="og:url" content="https://3dfractal.no/digital-web.html" />
+  <meta property="og:title" content="Digital web og innovasjon — 3D Fractal" />
+  <meta property="og:description" content="3D Fractal hjelper utvalgte partnere med å gjøre ideer om til fungerende digitale produkter og nettsider — med fokus på utfall, brukere og strukturert gjennomføring." />
+  <meta property="og:image" content="https://3dfractal.no/images/hero-dashboard.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Digital web og innovasjon — 3D Fractal" />
+  <meta name="twitter:description" content="3D Fractal hjelper utvalgte partnere med å gjøre ideer om til fungerende digitale produkter og nettsider — med fokus på utfall, brukere og strukturert gjennomføring." />
+  <meta name="twitter:image" content="https://3dfractal.no/images/hero-dashboard.jpg" />
+  <script>
+    (function () {
+      var saved = localStorage.getItem('3df-lang');
+      if (saved) { document.documentElement.setAttribute('data-lang', saved); return; }
+      var bl = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+      var lang = 'en';
+      if (bl === 'no' || bl.slice(0,3) === 'nb-' || bl.slice(0,3) === 'nn-' || bl.slice(0,2) === 'no') lang = 'no';
+      else if (bl.slice(0,2) === 'sv') lang = 'sv';
+      document.documentElement.setAttribute('data-lang', lang);
+    })();
+  </script>
+  <link rel="icon" href="icons/favicon.ico" sizes="any">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="icons/site.webmanifest">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="stylesheet" href="css/style.css?v=5" />
+  <link rel="stylesheet" href="css/new.css?v=6" />
+  <style>
+    html:not([data-lang="no"]) .lang-no { display: none !important; }
+    html:not([data-lang="sv"]) .lang-sv { display: none !important; }
+    html:not([data-lang="en"]) .lang-en { display: none !important; }
+
+    .lang-switcher { display: flex; align-items: center; gap: 4px; margin-left: 12px; }
+    .lang-btn {
+      background: none; border: none;
+      font-family: var(--font-body, Inter, sans-serif);
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em;
+      color: var(--color-text-muted, #64748b); cursor: pointer;
+      padding: 2px 4px; border-radius: 4px; transition: color 0.15s;
+    }
+    .lang-btn.active, .lang-btn:hover { color: var(--color-primary, #005BFF); }
+    .lang-sep { color: var(--color-border, #DDE5F0); font-size: 0.85rem; }
+    .logo-img { height: 190px !important; width: auto !important; max-width: none !important; }
+
+    /* Page-specific */
+    .dw-hero {
+      padding: 100px 0 80px;
+      background: linear-gradient(135deg, #f8faff 0%, #eef3ff 100%);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .dw-hero .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--color-primary);
+      margin-bottom: 32px; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .dw-hero .back-link:hover { opacity: 0.7; }
+    .dw-hero h1 { margin-bottom: 20px; }
+    .dw-hero .hero-lead {
+      font-size: 1.15rem !important; color: var(--color-text) !important;
+      max-width: 620px; line-height: 1.7 !important; font-weight: 400;
+    }
+    .dw-pillars {
+      padding: 80px 0;
+      background: #fff;
+    }
+    .dw-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .dw-pillar {
+      padding: 36px 32px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      background: var(--color-bg);
+    }
+    .dw-pillar-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      background: rgba(0,91,255,0.08);
+      display: grid; place-items: center;
+      color: var(--color-primary);
+      margin-bottom: 20px;
+    }
+    .dw-pillar h3 { margin-bottom: 12px; }
+    .dw-how {
+      padding: 80px 0;
+      background: var(--color-bg);
+    }
+    .dw-how-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 48px;
+    }
+    .dw-step-list {
+      display: flex; flex-direction: column; gap: 24px;
+    }
+    .dw-step {
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .dw-step-num {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--color-primary); color: #fff;
+      display: grid; place-items: center;
+      font-size: 0.78rem; font-weight: 700; flex-shrink: 0;
+    }
+    .dw-step-body h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .dw-cta-box {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 40px;
+    }
+    .dw-cta-box h3 { margin-bottom: 12px; }
+    .dw-cta-box .btn { margin-top: 20px; display: inline-flex; }
+
+    @media (max-width: 900px) {
+      .dw-pillars-grid { grid-template-columns: 1fr; }
+      .dw-how-grid { grid-template-columns: 1fr; gap: 40px; }
+      .logo-img { height: 44px !important; }
+    }
+    @media (max-width: 768px) {
+      .dw-hero { padding: 60px 0 48px; }
+      .logo-img { height: 38px !important; }
+      .nav { padding: 10px 16px !important; gap: 12px !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ──────────────────────────────────────────────────── -->
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <img src="images/Logo 2.jpg" alt="3D Fractal" class="logo-img" />
+      </a>
+      <div class="nav-links">
+        <a href="index.html#portfolio" class="lang-no">Portefølje</a>
+        <a href="index.html#portfolio" class="lang-sv">Portfölj</a>
+        <a href="index.html#portfolio" class="lang-en">Portfolio</a>
+        <a href="index.html#about" class="lang-no">Om oss</a>
+        <a href="index.html#about" class="lang-sv">Om oss</a>
+        <a href="index.html#about" class="lang-en">About</a>
+        <a href="index.html#investments" class="lang-no">Investeringer</a>
+        <a href="index.html#investments" class="lang-sv">Investeringar</a>
+        <a href="index.html#investments" class="lang-en">Investments</a>
+        <a href="index.html#contact" class="lang-no">Kontakt</a>
+        <a href="index.html#contact" class="lang-sv">Kontakt</a>
+        <a href="index.html#contact" class="lang-en">Contact</a>
+      </div>
+      <div class="nav-end">
+        <div class="lang-switcher">
+          <button class="lang-btn" id="btnNo" onclick="setLang('no')">NO</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" id="btnSv" onclick="setLang('sv')">SV</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" id="btnEn" onclick="setLang('en')">EN</button>
+          <button class="nav-toggle" id="navToggle" aria-label="Menu">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+        <a href="index.html#contact" class="btn btn-primary nav-cta lang-no">
+          Ta kontakt
+          <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+        <a href="index.html#contact" class="btn btn-primary nav-cta lang-sv">
+          Ta kontakt
+          <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+        <a href="index.html#contact" class="btn btn-primary nav-cta lang-en">
+          Get in touch
+          <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- ── HERO ─────────────────────────────────────────────────── -->
+  <section class="dw-hero">
+    <div class="container">
+
+      <a href="index.html#portfolio" class="back-link lang-no">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Tilbake til portefølje
+      </a>
+      <a href="index.html#portfolio" class="back-link lang-sv">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Tillbaka till portfölj
+      </a>
+      <a href="index.html#portfolio" class="back-link lang-en">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back to portfolio
+      </a>
+
+      <span class="section-label lang-no">Selektiv kapabilitet</span>
+      <span class="section-label lang-sv">Selektiv förmåga</span>
+      <span class="section-label lang-en">Selective capability</span>
+
+      <h1 class="lang-no">Digital web<br>og innovasjon.</h1>
+      <h1 class="lang-sv">Digital webb<br>och innovation.</h1>
+      <h1 class="lang-en">Digital web<br>and innovation.</h1>
+
+      <p class="hero-lead lang-no">
+        3D Fractal hjelper utvalgte partnere med å gjøre ideer om til fungerende digitale produkter, nettsider og prototyper. Vi bringer mange års erfaring fra digital produktutvikling, brukeropplevelse og strukturert gjennomføring — og setter alltid utfall og brukere foran teknologi og leveranser.
+      </p>
+      <p class="hero-lead lang-sv">
+        3D Fractal hjälper utvalda partners att omvandla idéer till fungerande digitala produkter, webbplatser och prototyper. Vi tar med oss många års erfarenhet från digital produktutveckling, användarupplevelse och strukturerat genomförande — och sätter alltid utfall och användare före teknik och leveranser.
+      </p>
+      <p class="hero-lead lang-en">
+        3D Fractal helps selected partners turn ideas into working digital products, websites and prototypes. We bring many years of experience in digital product development, user experience and structured execution — always putting outcomes and users ahead of technology and deliverables.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ── THREE PILLARS ────────────────────────────────────────── -->
+  <section class="dw-pillars">
+    <div class="container">
+
+      <span class="section-label lang-no">Vår tilnærming</span>
+      <span class="section-label lang-sv">Vårt angreppssätt</span>
+      <span class="section-label lang-en">Our approach</span>
+
+      <h2 class="lang-no">Det vi tror på.</h2>
+      <h2 class="lang-sv">Det vi tror på.</h2>
+      <h2 class="lang-en">What we believe in.</h2>
+
+      <div class="dw-pillars-grid">
+
+        <!-- Outcome focus -->
+        <div class="dw-pillar">
+          <div class="dw-pillar-icon">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+            </svg>
+          </div>
+          <h3 class="lang-no">Resultatorientert</h3>
+          <h3 class="lang-sv">Resultatorienterat</h3>
+          <h3 class="lang-en">Outcome-focused</h3>
+          <p class="lang-no">Vi måler suksess i faktiske resultater — ikke i antall sider, features eller timer. Spørsmålet vi alltid stiller er: hva skal dette egentlig oppnå? En nettside er ikke et mål i seg selv. Den skal løse et problem, skape verdi eller åpne en mulighet.</p>
+          <p class="lang-sv">Vi mäter framgång i faktiska resultat — inte i antal sidor, funktioner eller timmar. Frågan vi alltid ställer är: vad ska detta egentligen uppnå? En webbplats är inte ett mål i sig. Den ska lösa ett problem, skapa värde eller öppna en möjlighet.</p>
+          <p class="lang-en">We measure success in actual outcomes — not in number of pages, features or hours. The question we always ask is: what is this really supposed to achieve? A website is not an end in itself. It should solve a problem, create value or open an opportunity.</p>
+        </div>
+
+        <!-- User focus -->
+        <div class="dw-pillar">
+          <div class="dw-pillar-icon">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <h3 class="lang-no">Brukerfokusert</h3>
+          <h3 class="lang-sv">Användarfokuserat</h3>
+          <h3 class="lang-en">User-focused</h3>
+          <p class="lang-no">Gode digitale produkter er bygget rundt faktiske brukerbehov — ikke antakelser. Vi jobber strukturert med å forstå hvem brukerne er, hva de prøver å oppnå og hva som hindrer dem. Det er dette som skaper digitale opplevelser som faktisk fungerer.</p>
+          <p class="lang-sv">Bra digitala produkter är byggda kring faktiska användarbehov — inte antaganden. Vi arbetar strukturerat med att förstå vilka användarna är, vad de försöker uppnå och vad som hindrar dem. Det är detta som skapar digitala upplevelser som faktiskt fungerar.</p>
+          <p class="lang-en">Good digital products are built around actual user needs — not assumptions. We work in a structured way to understand who the users are, what they are trying to achieve and what is stopping them. This is what creates digital experiences that actually work.</p>
+        </div>
+
+        <!-- Experience -->
+        <div class="dw-pillar">
+          <div class="dw-pillar-icon">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+            </svg>
+          </div>
+          <h3 class="lang-no">Over 20 års erfaring</h3>
+          <h3 class="lang-sv">Över 20 års erfarenhet</h3>
+          <h3 class="lang-en">Over 20 years of experience</h3>
+          <p class="lang-no">Bak 3D Fractal ligger over 20 års praktisk erfaring fra produktledelse, enterprise-arkitektur, systemintegrasjon, ERP og digital produktutvikling. Vi har sett hva som fungerer og hva som ikke gjør det — og vi bruker den erfaringen aktivt i alt vi gjør.</p>
+          <p class="lang-sv">Bakom 3D Fractal finns över 20 års praktisk erfarenhet från produktledning, enterprise-arkitektur, systemintegration, ERP och digital produktutveckling. Vi har sett vad som fungerar och vad som inte gör det — och vi använder den erfarenheten aktivt i allt vi gör.</p>
+          <p class="lang-en">Behind 3D Fractal lies over 20 years of hands-on experience from product management, enterprise architecture, system integration, ERP and digital product development. We have seen what works and what does not — and we actively apply that experience in everything we do.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── HOW WE WORK + CTA ─────────────────────────────────────── -->
+  <section class="dw-how">
+    <div class="container">
+      <div class="dw-how-grid">
+
+        <div>
+          <span class="section-label lang-no">Hvordan vi jobber</span>
+          <span class="section-label lang-sv">Hur vi arbetar</span>
+          <span class="section-label lang-en">How we work</span>
+          <h2 class="lang-no">Strukturert.<br>Tydelig. Praktisk.</h2>
+          <h2 class="lang-sv">Strukturerat.<br>Tydligt. Praktiskt.</h2>
+          <h2 class="lang-en">Structured.<br>Clear. Practical.</h2>
+
+          <div class="dw-step-list" style="margin-top: 32px;">
+            <div class="dw-step">
+              <div class="dw-step-num">1</div>
+              <div class="dw-step-body">
+                <h4 class="lang-no">Forstå ideen og konteksten</h4>
+                <h4 class="lang-sv">Förstå idén och kontexten</h4>
+                <h4 class="lang-en">Understand the idea and context</h4>
+                <p class="lang-no">Vi starter alltid med å forstå hva du ønsker å oppnå, hvem det er for og hva som finnes fra før.</p>
+                <p class="lang-sv">Vi börjar alltid med att förstå vad du vill uppnå, vem det är för och vad som redan finns.</p>
+                <p class="lang-en">We always start by understanding what you want to achieve, who it is for and what already exists.</p>
+              </div>
+            </div>
+            <div class="dw-step">
+              <div class="dw-step-num">2</div>
+              <div class="dw-step-body">
+                <h4 class="lang-no">Strukturer og tydeliggjør</h4>
+                <h4 class="lang-sv">Strukturera och tydliggör</h4>
+                <h4 class="lang-en">Structure and clarify</h4>
+                <p class="lang-no">Vi hjelper med å strukturere ideer, definere omfang og ta tydelige beslutninger før vi begynner å bygge.</p>
+                <p class="lang-sv">Vi hjälper till att strukturera idéer, definiera omfattning och fatta tydliga beslut innan vi börjar bygga.</p>
+                <p class="lang-en">We help structure ideas, define scope and make clear decisions before we start building.</p>
+              </div>
+            </div>
+            <div class="dw-step">
+              <div class="dw-step-num">3</div>
+              <div class="dw-step-body">
+                <h4 class="lang-no">Bygg, test og lever</h4>
+                <h4 class="lang-sv">Bygg, testa och leverera</h4>
+                <h4 class="lang-en">Build, test and deliver</h4>
+                <p class="lang-no">Vi gjennomfører med fokus på kvalitet, tydelighet og faktisk verdi — ikke bare ferdigstillelse.</p>
+                <p class="lang-sv">Vi genomför med fokus på kvalitet, tydlighet och faktiskt värde — inte bara färdigställande.</p>
+                <p class="lang-en">We execute with a focus on quality, clarity and actual value — not just completion.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dw-cta-box">
+          <span class="section-label lang-no">Selektiv kapabilitet</span>
+          <span class="section-label lang-sv">Selektiv förmåga</span>
+          <span class="section-label lang-en">Selective capability</span>
+          <h3 class="lang-no">Dette er ikke tradisjonell konsulentvirksomhet.</h3>
+          <h3 class="lang-sv">Detta är inte traditionell konsultverksamhet.</h3>
+          <h3 class="lang-en">This is not traditional consulting.</h3>
+          <p class="lang-no">3D Fractal jobber med et lite antall utvalgte partnere der det er god match mellom behov, ambisjon og tilnærming. Vi prioriterer prosjekter der produkttenkning, tydelighet og langsiktig potensial er sentralt.</p>
+          <p class="lang-sv">3D Fractal arbetar med ett litet antal utvalda partners där det finns god matchning mellan behov, ambition och angreppssätt. Vi prioriterar projekt där produkttänkande, tydlighet och långsiktigt potential är centralt.</p>
+          <p class="lang-en">3D Fractal works with a small number of selected partners where there is a good match between need, ambition and approach. We prioritise projects where product thinking, clarity and long-term potential are central.</p>
+          <a href="index.html#contact" class="btn btn-primary lang-no">
+            Ta kontakt
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          <a href="index.html#contact" class="btn btn-primary lang-sv">
+            Ta kontakt
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          <a href="index.html#contact" class="btn btn-primary lang-en">
+            Get in touch
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── FOOTER ────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-simple">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="images/logo 3.png" alt="3D Fractal" class="logo-img logo-img--footer" />
+          </a>
+          <p class="footer-tagline lang-no">Digitale produkter. Nisjeplattformer. Innovasjonskonsepter.</p>
+          <p class="footer-tagline lang-sv">Digitala produkter. Nischplattformar. Innovationskoncept.</p>
+          <p class="footer-tagline lang-en">Digital products. Niche platforms. Innovation concepts.</p>
+        </div>
+        <div class="footer-links-col">
+          <h4 class="lang-no">Naviger</h4>
+          <h4 class="lang-sv">Navigera</h4>
+          <h4 class="lang-en">Navigate</h4>
+          <ul>
+            <li>
+              <a href="index.html#portfolio" class="lang-no">Portefølje</a>
+              <a href="index.html#portfolio" class="lang-sv">Portfölj</a>
+              <a href="index.html#portfolio" class="lang-en">Portfolio</a>
+            </li>
+            <li>
+              <a href="index.html#about" class="lang-no">Om oss</a>
+              <a href="index.html#about" class="lang-sv">Om oss</a>
+              <a href="index.html#about" class="lang-en">About</a>
+            </li>
+            <li>
+              <a href="index.html#investments" class="lang-no">Investeringer</a>
+              <a href="index.html#investments" class="lang-sv">Investeringar</a>
+              <a href="index.html#investments" class="lang-en">Investments</a>
+            </li>
+            <li>
+              <a href="index.html#contact" class="lang-no">Kontakt</a>
+              <a href="index.html#contact" class="lang-sv">Kontakt</a>
+              <a href="index.html#contact" class="lang-en">Contact</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4 class="lang-no">Portefølje</h4>
+          <h4 class="lang-sv">Portfölj</h4>
+          <h4 class="lang-en">Portfolio</h4>
+          <ul>
+            <li><a href="https://one-sliders.com" target="_blank" rel="noopener">One-sliders.com</a></li>
+            <li><a href="index.html#portfolio">Custom HiFi</a></li>
+            <li>
+              <a href="index.html#portfolio" class="lang-no">Familieressursplanlegging</a>
+              <a href="index.html#portfolio" class="lang-sv">Familjeresursplanering</a>
+              <a href="index.html#portfolio" class="lang-en">Family Resource Planning</a>
+            </li>
+            <li><a href="https://accelerate-iver.com/no/" target="_blank" rel="noopener">Accelerate Strategy AS</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="lang-no">© 2026 3D Fractal AS. Norge.</span>
+        <span class="lang-sv">© 2026 3D Fractal AS. Norge.</span>
+        <span class="lang-en">© 2026 3D Fractal AS. Norway.</span>
+        <div class="footer-bottom-links">
+          <a href="#" class="lang-no">Personvern</a>
+          <a href="#" class="lang-sv">Integritet</a>
+          <a href="#" class="lang-en">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    var _titles = {
+      no: 'Digital web og innovasjon — 3D Fractal',
+      sv: 'Digital webb och innovation — 3D Fractal',
+      en: 'Digital web and innovation — 3D Fractal'
+    };
+    var _descs = {
+      no: '3D Fractal hjelper utvalgte partnere med å gjøre ideer om til fungerende digitale produkter og nettsider — med fokus på utfall, brukere og strukturert gjennomføring.',
+      sv: '3D Fractal hjälper utvalda partners att omvandla idéer till fungerande digitala produkter och webbplatser — med fokus på utfall, användare och strukturerat genomförande.',
+      en: '3D Fractal helps selected partners turn ideas into working digital products and websites — with a focus on outcomes, users and structured execution.'
+    };
+
+    function _setMeta(selector, attr, value) {
+      var el = document.querySelector(selector);
+      if (el) el.setAttribute(attr, value);
+    }
+
+    function setLang(lang) {
+      document.documentElement.setAttribute('data-lang', lang);
+      document.documentElement.setAttribute('lang', lang === 'no' ? 'no' : lang === 'sv' ? 'sv' : 'en');
+      var t = _titles[lang] || _titles.no;
+      var d = _descs[lang] || _descs.no;
+      document.title = t;
+      _setMeta('meta[name="description"]', 'content', d);
+      _setMeta('meta[property="og:title"]', 'content', t);
+      _setMeta('meta[property="og:description"]', 'content', d);
+      _setMeta('meta[name="twitter:title"]', 'content', t);
+      _setMeta('meta[name="twitter:description"]', 'content', d);
+      localStorage.setItem('3df-lang', lang);
+      ['no','sv','en'].forEach(function(l) {
+        document.getElementById('btn' + l.charAt(0).toUpperCase() + l.slice(1)).classList.toggle('active', l === lang);
+      });
+    }
+    (function () {
+      var lang = document.documentElement.getAttribute('data-lang') || 'no';
+      setLang(lang);
+    })();
+  </script>
+</body>
+</html>
