@@ -106,6 +106,11 @@
     }
   }
 
-  // pageshow fires on both initial load AND bfcache restore (iOS Safari)
-  window.addEventListener('pageshow', checkConsent);
+  // Run immediately (fresh load — banner element already exists in DOM above this script)
+  checkConsent();
+
+  // Also re-run on bfcache restore (iOS Safari back/forward navigation)
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) checkConsent();
+  });
 })();
