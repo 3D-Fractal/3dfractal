@@ -54,9 +54,15 @@
       document.documentElement.setAttribute('data-lang', lang);
     })();
     try {
-      if (localStorage.getItem('3df-consent')) {
-        document.documentElement.setAttribute('data-consent', 'given');
+      var _cs = localStorage.getItem('3df-consent');
+      if (!_cs) {
+        var _cm = document.cookie.match('(^|;)\\s*3df-consent=([^;]+)');
+        if (_cm) {
+          _cs = decodeURIComponent(_cm[2]);
+          try { localStorage.setItem('3df-consent', _cs); } catch(e) {}
+        }
       }
+      if (_cs) document.documentElement.setAttribute('data-consent', 'given');
     } catch(e) {}
   </script>
   <link rel="icon" href="icons/favicon.ico" sizes="any">
