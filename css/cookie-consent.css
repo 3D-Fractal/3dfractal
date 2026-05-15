@@ -209,8 +209,7 @@
   .cookie-banner-main { flex-direction: column; align-items: flex-start; gap: 16px; }
   .cookie-actions { width: 100%; flex-direction: column; }
   .cookie-btn { width: 100%; text-align: center; padding: 11px; }
-  .cookie-pref-btn {
-    bottom: max(20px, calc(env(safe-area-inset-bottom, 0px) + 12px));
-    right: max(20px, calc(env(safe-area-inset-right, 0px) + 12px));
-  }
+  /* Hide gear button on mobile — use footer "Endre samtykke" link instead.
+     The button overlaps Safari's toolbar and causes accidental taps. */
+  .cookie-pref-btn { display: none !important; }
 }
