@@ -98,12 +98,6 @@
     var saved = getConsent();
     var banner = document.getElementById('cookieBanner');
     if (saved === null) {
-      // DEBUG — show storage state inside banner
-      var dbg = document.getElementById('_cdbg');
-      if (dbg) {
-        var ls = '?'; try { ls = localStorage.getItem('3df-consent'); } catch(e) { ls = 'ERR'; }
-        dbg.textContent = 'LS=' + ls + ' | CK=' + document.cookie;
-      }
       showBanner();
     } else {
       applyConsent(saved);
