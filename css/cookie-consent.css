@@ -153,6 +153,53 @@
   justify-content: flex-end;
 }
 
+/* ── Floating preferences button ────────────────────────────── */
+.cookie-pref-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9998;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #0f172a;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  transition: opacity 0.2s, transform 0.2s;
+  font-family: inherit;
+}
+.cookie-pref-btn:hover {
+  opacity: 0.85;
+  transform: scale(1.08);
+}
+.cookie-pref-btn[aria-label] {
+  position: relative;
+}
+.cookie-pref-btn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: 52px;
+  bottom: 50%;
+  transform: translateY(50%);
+  background: #0f172a;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.78rem;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(255,255,255,0.12);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.cookie-pref-btn:hover::after { opacity: 1; }
+
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .cookie-banner { padding: 16px; }
