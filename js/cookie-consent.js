@@ -92,15 +92,20 @@
     }
   };
 
-  document.addEventListener('DOMContentLoaded', function () {
+  function checkConsent() {
     var saved = getConsent();
+    var banner = document.getElementById('cookieBanner');
     if (saved === null) {
       showBanner();
     } else {
       applyConsent(saved);
-      // Pre-check the toggle if analytics was granted
+      // Force banner hidden — handles bfcache restore on iOS Safari
+      if (banner) { banner.style.display = 'none'; banner.style.opacity = '0'; }
       var el = document.getElementById('consentAnalytics');
       if (el && saved.analytics) el.checked = true;
     }
-  });
+  }
+
+  // pageshow fires on both initial load AND bfcache restore (iOS Safari)
+  window.addEventListener('pageshow', checkConsent);
 })();
