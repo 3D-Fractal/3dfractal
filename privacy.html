@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="no" data-lang="no">
+<head>
+  <!-- Google tag (gtag.js) — Consent Mode v2 -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage:  'denied',
+      ad_storage:         'denied',
+      ad_user_data:       'denied',
+      ad_personalization: 'denied',
+      wait_for_update:    500
+    });
+    try {
+      var _sv = JSON.parse(localStorage.getItem('3df-consent'));
+      if (_sv) gtag('consent', 'update', {
+        analytics_storage:  _sv.analytics ? 'granted' : 'denied',
+        ad_storage:         'denied',
+        ad_user_data:       'denied',
+        ad_personalization: 'denied'
+      });
+    } catch(e) {}
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PKXDRMNHRP"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-PKXDRMNHRP');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title class="lang-no">Personvernerklæring — 3D Fractal</title>
+  <title class="lang-sv">Integritetspolicy — 3D Fractal</title>
+  <title class="lang-en">Privacy Policy — 3D Fractal</title>
+  <title>Personvernerklæring — 3D Fractal</title>
+  <meta name="description" content="Personvernerklæring for 3D Fractal. Informasjon om hvilke informasjonskapsler vi bruker og dine rettigheter under GDPR." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://3dfractal.no/privacy.html" />
+  <script>
+    (function () {
+      var saved = localStorage.getItem('3df-lang');
+      if (saved) { document.documentElement.setAttribute('data-lang', saved); return; }
+      var bl = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+      var lang = 'en';
+      if (bl === 'no' || bl.slice(0,3) === 'nb-' || bl.slice(0,3) === 'nn-' || bl.slice(0,2) === 'no') lang = 'no';
+      else if (bl.slice(0,2) === 'sv') lang = 'sv';
+      document.documentElement.setAttribute('data-lang', lang);
+    })();
+  </script>
+  <link rel="icon" href="icons/favicon.ico" sizes="any">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="icons/site.webmanifest">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="stylesheet" href="css/style.css?v=5" />
+  <link rel="stylesheet" href="css/new.css?v=6" />
+  <link rel="stylesheet" href="css/cookie-consent.css" />
+  <style>
+    html:not([data-lang="no"]) .lang-no { display: none !important; }
+    html:not([data-lang="sv"]) .lang-sv { display: none !important; }
+    html:not([data-lang="en"]) .lang-en { display: none !important; }
+
+    .lang-switcher { display: flex; align-items: center; gap: 4px; margin-left: 12px; }
+    .lang-btn {
+      background: none; border: none;
+      font-family: var(--font-body, Inter, sans-serif);
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em;
+      color: var(--color-text-muted, #64748b); cursor: pointer;
+      padding: 2px 4px; border-radius: 4px; transition: color 0.15s;
+    }
+    .lang-btn.active, .lang-btn:hover { color: var(--color-primary, #005BFF); }
+    .lang-sep { color: var(--color-border, #DDE5F0); font-size: 0.85rem; }
+
+    .priv-hero {
+      padding: 80px 0 56px;
+      background: linear-gradient(135deg, #f8faff 0%, #eef3ff 100%);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .priv-body {
+      padding: 64px 0 96px;
+      background: #fff;
+    }
+    .priv-content {
+      max-width: 720px;
+    }
+    .priv-content h2 {
+      margin-top: 48px;
+      margin-bottom: 12px;
+    }
+    .priv-content h3 {
+      margin-top: 32px;
+      margin-bottom: 8px;
+      font-size: 1rem !important;
+      font-weight: 700;
+    }
+    .priv-content p { margin-bottom: 16px; }
+    .priv-content ul {
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+    .priv-content ul li {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 6px;
+      color: var(--color-text);
+    }
+    .priv-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.88rem;
+    }
+    .priv-table th {
+      background: var(--color-bg);
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 2px solid var(--color-border);
+    }
+    .priv-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--color-border);
+      color: var(--color-text);
+      vertical-align: top;
+    }
+    .priv-table tr:last-child td { border-bottom: none; }
+
+    .priv-consent-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 8px;
+      padding: 10px 20px;
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: opacity 0.2s;
+    }
+    .priv-consent-btn:hover { opacity: 0.85; }
+
+    @media (max-width: 768px) {
+      .priv-hero { padding: 60px 0 40px; }
+      .priv-table { font-size: 0.8rem; }
+      .priv-table th, .priv-table td { padding: 8px 10px; }
+      .nav { padding: 10px 16px !important; gap: 12px !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ──────────────────────────────────────────────────── -->
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <img src="images/Logo 2.jpg" alt="3D Fractal" class="logo-img" />
+      </a>
+      <div class="nav-links">
+        <a href="index.html#portfolio" class="lang-no">Portefølje</a>
+        <a href="index.html#portfolio" class="lang-sv">Portfölj</a>
+        <a href="index.html#portfolio" class="lang-en">Portfolio</a>
+        <a href="index.html#about" class="lang-no">Om oss</a>
+        <a href="index.html#about" class="lang-sv">Om oss</a>
+        <a href="index.html#about" class="lang-en">About</a>
+        <a href="index.html#investments" class="lang-no">Investeringer</a>
+        <a href="index.html#investments" class="lang-sv">Investeringar</a>
+        <a href="index.html#investments" class="lang-en">Investments</a>
+        <a href="index.html#contact" class="lang-no">Kontakt</a>
+        <a href="index.html#contact" class="lang-sv">Kontakt</a>
+        <a href="index.html#contact" class="lang-en">Contact</a>
+      </div>
+      <div class="nav-end">
+        <div class="lang-switcher">
+          <button class="lang-btn" id="btnNo" onclick="setLang('no')">NO</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" id="btnSv" onclick="setLang('sv')">SV</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" id="btnEn" onclick="setLang('en')">EN</button>
+          <button class="nav-toggle" id="navToggle" aria-label="Menu">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+        <a href="index.html#contact" class="btn btn-primary nav-cta lang-no">Ta kontakt
+          <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="index.html#contact" class="btn btn-primary nav-cta lang-sv">Ta kontakt
+          <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="index.html#contact" class="btn btn-primary nav-cta lang-en">Get in touch
+          <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ── HERO ─────────────────────────────────────────────────── -->
+  <section class="priv-hero">
+    <div class="container">
+      <span class="section-label lang-no">Juridisk</span>
+      <span class="section-label lang-sv">Juridiskt</span>
+      <span class="section-label lang-en">Legal</span>
+      <h1 class="lang-no">Personvernerklæring</h1>
+      <h1 class="lang-sv">Integritetspolicy</h1>
+      <h1 class="lang-en">Privacy Policy</h1>
+      <p class="hero-lead lang-no">Sist oppdatert: mai 2026. Denne erklæringen forklarer hvordan 3D Fractal behandler opplysninger om deg som besøker 3dfractal.no.</p>
+      <p class="hero-lead lang-sv">Senast uppdaterad: maj 2026. Denna policy förklarar hur 3D Fractal hanterar uppgifter om dig som besöker 3dfractal.no.</p>
+      <p class="hero-lead lang-en">Last updated: May 2026. This policy explains how 3D Fractal processes information about you when you visit 3dfractal.no.</p>
+    </div>
+  </section>
+
+  <!-- ── BODY ─────────────────────────────────────────────────── -->
+  <section class="priv-body">
+    <div class="container">
+      <div class="priv-content">
+
+        <!-- ── NO ─────────────────────────────────────────────── -->
+        <div class="lang-no">
+          <h2>1. Behandlingsansvarlig</h2>
+          <p>3D Fractal AS er behandlingsansvarlig for personopplysninger som samles inn via dette nettstedet.<br>
+          E-post: <a href="mailto:info@3dfractal.no">info@3dfractal.no</a><br>
+          Land: Norge</p>
+
+          <h2>2. Informasjonskapsler vi bruker</h2>
+          <p>Vi bruker kun informasjonskapsler du aktivt godtar. Som standard er all sporing deaktivert.</p>
+
+          <table class="priv-table">
+            <thead>
+              <tr><th>Navn</th><th>Leverandør</th><th>Formål</th><th>Varighet</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>3df-consent</td><td>3D Fractal</td><td>Lagrer ditt samtykkevalg</td><td>Inntil du sletter det</td></tr>
+              <tr><td>3df-lang</td><td>3D Fractal</td><td>Husker valgt språk</td><td>Inntil du sletter det</td></tr>
+              <tr><td>_ga, _ga_*</td><td>Google Analytics</td><td>Anonym trafikkanalyse</td><td>2 år</td></tr>
+            </tbody>
+          </table>
+
+          <p>Google Analytics-informasjonskapsler (_ga, _ga_*) plasseres <strong>kun</strong> hvis du godtar analysecookies.</p>
+
+          <h2>3. Hva Google Analytics samler inn</h2>
+          <ul>
+            <li>Antall besøk og sidevisninger (anonymisert)</li>
+            <li>Omtrentlig geografisk plassering (land/by)</li>
+            <li>Enhet og nettleser (type, ikke identitet)</li>
+            <li>Kildeside (hvilken side du kom fra)</li>
+          </ul>
+          <p>IP-adresser anonymiseres automatisk. Vi samler ikke inn navn, e-post eller annen direkte identifiserbar informasjon via analyseverktøyet.</p>
+
+          <h2>4. Dine rettigheter under GDPR</h2>
+          <ul>
+            <li><strong>Rett til innsyn</strong> — du kan be om informasjon om hvilke data vi har om deg</li>
+            <li><strong>Rett til sletting</strong> — du kan be om at data om deg slettes</li>
+            <li><strong>Rett til å trekke tilbake samtykke</strong> — du kan endre eller trekke tilbake samtykke når som helst</li>
+            <li><strong>Rett til å klage</strong> — du kan klage til Datatilsynet (datatilsynet.no)</li>
+          </ul>
+
+          <h2>5. Endre samtykke</h2>
+          <p>Du kan endre eller trekke tilbake samtykket ditt når som helst:</p>
+          <button class="priv-consent-btn" onclick="dfConsent.openPreferences()">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+            Endre samtykkevalg
+          </button>
+
+          <h2>6. Kontakt</h2>
+          <p>Har du spørsmål om personvern, ta kontakt på <a href="mailto:info@3dfractal.no">info@3dfractal.no</a>.</p>
+        </div>
+
+        <!-- ── SV ─────────────────────────────────────────────── -->
+        <div class="lang-sv">
+          <h2>1. Personuppgiftsansvarig</h2>
+          <p>3D Fractal AS är personuppgiftsansvarig för uppgifter som samlas in via denna webbplats.<br>
+          E-post: <a href="mailto:info@3dfractal.no">info@3dfractal.no</a><br>
+          Land: Norge</p>
+
+          <h2>2. Cookies vi använder</h2>
+          <p>Vi använder endast cookies som du aktivt godkänner. Som standard är all spårning inaktiverad.</p>
+
+          <table class="priv-table">
+            <thead>
+              <tr><th>Namn</th><th>Leverantör</th><th>Syfte</th><th>Varaktighet</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>3df-consent</td><td>3D Fractal</td><td>Sparar ditt samtycke</td><td>Tills du raderar det</td></tr>
+              <tr><td>3df-lang</td><td>3D Fractal</td><td>Kommer ihåg valt språk</td><td>Tills du raderar det</td></tr>
+              <tr><td>_ga, _ga_*</td><td>Google Analytics</td><td>Anonym trafikanalys</td><td>2 år</td></tr>
+            </tbody>
+          </table>
+
+          <p>Google Analytics-cookies (_ga, _ga_*) placeras <strong>endast</strong> om du godkänner analyscookies.</p>
+
+          <h2>3. Vad Google Analytics samlar in</h2>
+          <ul>
+            <li>Antal besök och sidvisningar (anonymiserat)</li>
+            <li>Ungefärlig geografisk plats (land/stad)</li>
+            <li>Enhet och webbläsare (typ, inte identitet)</li>
+            <li>Källsida (vilken sida du kom ifrån)</li>
+          </ul>
+          <p>IP-adresser anonymiseras automatiskt. Vi samlar inte in namn, e-post eller annan direkt identifierbar information via analysverktyget.</p>
+
+          <h2>4. Dina rättigheter enligt GDPR</h2>
+          <ul>
+            <li><strong>Rätt till tillgång</strong> — du kan begära information om vilka uppgifter vi har om dig</li>
+            <li><strong>Rätt till radering</strong> — du kan begära att uppgifter om dig raderas</li>
+            <li><strong>Rätt att återkalla samtycke</strong> — du kan ändra eller återkalla samtycke när som helst</li>
+            <li><strong>Rätt att klaga</strong> — du kan klaga till Datatilsynet (datatilsynet.no)</li>
+          </ul>
+
+          <h2>5. Ändra samtycke</h2>
+          <p>Du kan ändra eller återkalla ditt samtycke när som helst:</p>
+          <button class="priv-consent-btn" onclick="dfConsent.openPreferences()">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+            Ändra samtyckesinställningar
+          </button>
+
+          <h2>6. Kontakt</h2>
+          <p>Har du frågor om integritet, kontakta oss på <a href="mailto:info@3dfractal.no">info@3dfractal.no</a>.</p>
+        </div>
+
+        <!-- ── EN ─────────────────────────────────────────────── -->
+        <div class="lang-en">
+          <h2>1. Data Controller</h2>
+          <p>3D Fractal AS is the data controller for personal data collected through this website.<br>
+          Email: <a href="mailto:info@3dfractal.no">info@3dfractal.no</a><br>
+          Country: Norway</p>
+
+          <h2>2. Cookies we use</h2>
+          <p>We only use cookies you actively consent to. By default, all tracking is disabled.</p>
+
+          <table class="priv-table">
+            <thead>
+              <tr><th>Name</th><th>Provider</th><th>Purpose</th><th>Duration</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>3df-consent</td><td>3D Fractal</td><td>Stores your consent choice</td><td>Until you delete it</td></tr>
+              <tr><td>3df-lang</td><td>3D Fractal</td><td>Remembers selected language</td><td>Until you delete it</td></tr>
+              <tr><td>_ga, _ga_*</td><td>Google Analytics</td><td>Anonymous traffic analysis</td><td>2 years</td></tr>
+            </tbody>
+          </table>
+
+          <p>Google Analytics cookies (_ga, _ga_*) are placed <strong>only</strong> if you consent to analytics cookies.</p>
+
+          <h2>3. What Google Analytics collects</h2>
+          <ul>
+            <li>Number of visits and page views (anonymised)</li>
+            <li>Approximate geographic location (country/city)</li>
+            <li>Device and browser (type, not identity)</li>
+            <li>Referring page (which site you came from)</li>
+          </ul>
+          <p>IP addresses are automatically anonymised. We do not collect names, email addresses or other directly identifiable information through the analytics tool.</p>
+
+          <h2>4. Your rights under GDPR</h2>
+          <ul>
+            <li><strong>Right of access</strong> — you may request information about what data we hold about you</li>
+            <li><strong>Right to erasure</strong> — you may request that data about you is deleted</li>
+            <li><strong>Right to withdraw consent</strong> — you may change or withdraw consent at any time</li>
+            <li><strong>Right to complain</strong> — you may lodge a complaint with Datatilsynet (datatilsynet.no)</li>
+          </ul>
+
+          <h2>5. Change consent</h2>
+          <p>You may change or withdraw your consent at any time:</p>
+          <button class="priv-consent-btn" onclick="dfConsent.openPreferences()">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+            Change cookie preferences
+          </button>
+
+          <h2>6. Contact</h2>
+          <p>If you have questions about privacy, contact us at <a href="mailto:info@3dfractal.no">info@3dfractal.no</a>.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-simple">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="images/logo 3.png" alt="3D Fractal" class="logo-img logo-img--footer" />
+          </a>
+          <p class="footer-tagline lang-no">Digitale produkter. Nisjeplattformer. Innovasjonskonsepter.</p>
+          <p class="footer-tagline lang-sv">Digitala produkter. Nischplattformar. Innovationskoncept.</p>
+          <p class="footer-tagline lang-en">Digital products. Niche platforms. Innovation concepts.</p>
+        </div>
+        <div class="footer-links-col">
+          <h4 class="lang-no">Naviger</h4>
+          <h4 class="lang-sv">Navigera</h4>
+          <h4 class="lang-en">Navigate</h4>
+          <ul>
+            <li><a href="index.html#portfolio" class="lang-no">Portefølje</a><a href="index.html#portfolio" class="lang-sv">Portfölj</a><a href="index.html#portfolio" class="lang-en">Portfolio</a></li>
+            <li><a href="index.html#about" class="lang-no">Om oss</a><a href="index.html#about" class="lang-sv">Om oss</a><a href="index.html#about" class="lang-en">About</a></li>
+            <li><a href="index.html#contact" class="lang-no">Kontakt</a><a href="index.html#contact" class="lang-sv">Kontakt</a><a href="index.html#contact" class="lang-en">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4 class="lang-no">Juridisk</h4>
+          <h4 class="lang-sv">Juridiskt</h4>
+          <h4 class="lang-en">Legal</h4>
+          <ul>
+            <li><a href="privacy.html" class="lang-no">Personvern</a><a href="privacy.html" class="lang-sv">Integritet</a><a href="privacy.html" class="lang-en">Privacy</a></li>
+            <li><a href="#" onclick="dfConsent.openPreferences();return false;" class="lang-no">Endre samtykke</a><a href="#" onclick="dfConsent.openPreferences();return false;" class="lang-sv">Ändra samtycke</a><a href="#" onclick="dfConsent.openPreferences();return false;" class="lang-en">Cookie preferences</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="lang-no">© 2026 3D Fractal AS. Norge.</span>
+        <span class="lang-sv">© 2026 3D Fractal AS. Norge.</span>
+        <span class="lang-en">© 2026 3D Fractal AS. Norway.</span>
+        <div class="footer-bottom-links">
+          <a href="privacy.html" class="lang-no">Personvern</a>
+          <a href="privacy.html" class="lang-sv">Integritet</a>
+          <a href="privacy.html" class="lang-en">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── COOKIE CONSENT BANNER ───────────────────────────────── -->
+  <div id="cookieBanner" class="cookie-banner">
+    <div class="cookie-banner-main">
+      <div class="cookie-text">
+        <p class="lang-no">Vi bruker informasjonskapsler for å analysere trafikk og forbedre opplevelsen. <a href="privacy.html">Les mer i vår personvernerklæring.</a></p>
+        <p class="lang-sv">Vi använder cookies för att analysera trafik och förbättra upplevelsen. <a href="privacy.html">Läs mer i vår integritetspolicy.</a></p>
+        <p class="lang-en">We use cookies to analyze traffic and improve the experience. <a href="privacy.html">Read more in our privacy policy.</a></p>
+      </div>
+      <div class="cookie-actions">
+        <button class="cookie-btn cookie-btn--accept" onclick="dfConsent.acceptAll()">
+          <span class="lang-no">Godta alle</span><span class="lang-sv">Acceptera alla</span><span class="lang-en">Accept all</span>
+        </button>
+        <button class="cookie-btn cookie-btn--reject" onclick="dfConsent.rejectAll()">
+          <span class="lang-no">Avvis alle</span><span class="lang-sv">Avvisa alla</span><span class="lang-en">Reject all</span>
+        </button>
+        <button class="cookie-btn cookie-btn--custom" onclick="dfConsent.customize()">
+          <span class="lang-no">Tilpass</span><span class="lang-sv">Anpassa</span><span class="lang-en">Customize</span>
+        </button>
+      </div>
+    </div>
+    <div id="cookieCustomizePanel" class="cookie-customize-panel" style="display:none;">
+      <div class="cookie-toggle-row">
+        <div class="cookie-toggle-info">
+          <strong class="lang-no">Nødvendige</strong><strong class="lang-sv">Nödvändiga</strong><strong class="lang-en">Necessary</strong>
+          <span class="lang-no">Kreves for at siden skal fungere. Kan ikke deaktiveres.</span>
+          <span class="lang-sv">Krävs för att sidan ska fungera. Kan inte inaktiveras.</span>
+          <span class="lang-en">Required for the site to function. Cannot be disabled.</span>
+        </div>
+        <label class="cookie-toggle"><input type="checkbox" checked disabled /><span class="cookie-toggle-slider"></span></label>
+      </div>
+      <div class="cookie-toggle-row">
+        <div class="cookie-toggle-info">
+          <strong class="lang-no">Analyse (Google Analytics)</strong><strong class="lang-sv">Analys (Google Analytics)</strong><strong class="lang-en">Analytics (Google Analytics)</strong>
+          <span class="lang-no">Hjelper oss forstå hvordan siden brukes, anonymt.</span>
+          <span class="lang-sv">Hjälper oss förstå hur sidan används, anonymt.</span>
+          <span class="lang-en">Helps us understand how the site is used, anonymously.</span>
+        </div>
+        <label class="cookie-toggle"><input type="checkbox" id="consentAnalytics" /><span class="cookie-toggle-slider"></span></label>
+      </div>
+      <div class="cookie-customize-save">
+        <button class="cookie-btn cookie-btn--accept" onclick="dfConsent.saveCustom()">
+          <span class="lang-no">Lagre valg</span><span class="lang-sv">Spara val</span><span class="lang-en">Save preferences</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/cookie-consent.js"></script>
+  <script>
+    function setLang(lang) {
+      document.documentElement.setAttribute('data-lang', lang);
+      document.documentElement.setAttribute('lang', lang === 'no' ? 'no' : lang === 'sv' ? 'sv' : 'en');
+      localStorage.setItem('3df-lang', lang);
+      ['no','sv','en'].forEach(function(l) {
+        document.getElementById('btn' + l.charAt(0).toUpperCase() + l.slice(1)).classList.toggle('active', l === lang);
+      });
+    }
+    (function () {
+      var lang = document.documentElement.getAttribute('data-lang') || 'no';
+      setLang(lang);
+    })();
+  </script>
+</body>
+</html>

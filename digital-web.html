@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html lang="no" data-lang="no">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PKXDRMNHRP"></script>
+  <!-- Google tag (gtag.js) — Consent Mode v2 -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage:  'denied',
+      ad_storage:         'denied',
+      ad_user_data:       'denied',
+      ad_personalization: 'denied',
+      wait_for_update:    500
+    });
+    try {
+      var _sv = JSON.parse(localStorage.getItem('3df-consent'));
+      if (_sv) gtag('consent', 'update', {
+        analytics_storage:  _sv.analytics ? 'granted' : 'denied',
+        ad_storage:         'denied',
+        ad_user_data:       'denied',
+        ad_personalization: 'denied'
+      });
+    } catch(e) {}
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PKXDRMNHRP"></script>
+  <script>
     gtag('js', new Date());
     gtag('config', 'G-PKXDRMNHRP');
   </script>
@@ -43,6 +61,7 @@
   <meta name="theme-color" content="#0f172a">
   <link rel="stylesheet" href="css/style.css?v=5" />
   <link rel="stylesheet" href="css/new.css?v=6" />
+  <link rel="stylesheet" href="css/cookie-consent.css" />
   <style>
     html:not([data-lang="no"]) .lang-no { display: none !important; }
     html:not([data-lang="sv"]) .lang-sv { display: none !important; }
@@ -497,15 +516,66 @@
         <span class="lang-sv">© 2026 3D Fractal AS. Norge.</span>
         <span class="lang-en">© 2026 3D Fractal AS. Norway.</span>
         <div class="footer-bottom-links">
-          <a href="#" class="lang-no">Personvern</a>
-          <a href="#" class="lang-sv">Integritet</a>
-          <a href="#" class="lang-en">Privacy</a>
+          <a href="privacy.html" class="lang-no">Personvern</a>
+          <a href="privacy.html" class="lang-sv">Integritet</a>
+          <a href="privacy.html" class="lang-en">Privacy</a>
+          <a href="#" onclick="dfConsent.openPreferences();return false;" class="lang-no">Endre samtykke</a>
+          <a href="#" onclick="dfConsent.openPreferences();return false;" class="lang-sv">Ändra samtycke</a>
+          <a href="#" onclick="dfConsent.openPreferences();return false;" class="lang-en">Cookie preferences</a>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- ── COOKIE CONSENT BANNER ───────────────────────────────── -->
+  <div id="cookieBanner" class="cookie-banner">
+    <div class="cookie-banner-main">
+      <div class="cookie-text">
+        <p class="lang-no">Vi bruker informasjonskapsler for å analysere trafikk og forbedre opplevelsen. <a href="privacy.html">Les mer i vår personvernerklæring.</a></p>
+        <p class="lang-sv">Vi använder cookies för att analysera trafik och förbättra upplevelsen. <a href="privacy.html">Läs mer i vår integritetspolicy.</a></p>
+        <p class="lang-en">We use cookies to analyze traffic and improve the experience. <a href="privacy.html">Read more in our privacy policy.</a></p>
+      </div>
+      <div class="cookie-actions">
+        <button class="cookie-btn cookie-btn--accept" onclick="dfConsent.acceptAll()">
+          <span class="lang-no">Godta alle</span><span class="lang-sv">Acceptera alla</span><span class="lang-en">Accept all</span>
+        </button>
+        <button class="cookie-btn cookie-btn--reject" onclick="dfConsent.rejectAll()">
+          <span class="lang-no">Avvis alle</span><span class="lang-sv">Avvisa alla</span><span class="lang-en">Reject all</span>
+        </button>
+        <button class="cookie-btn cookie-btn--custom" onclick="dfConsent.customize()">
+          <span class="lang-no">Tilpass</span><span class="lang-sv">Anpassa</span><span class="lang-en">Customize</span>
+        </button>
+      </div>
+    </div>
+    <div id="cookieCustomizePanel" class="cookie-customize-panel" style="display:none;">
+      <div class="cookie-toggle-row">
+        <div class="cookie-toggle-info">
+          <strong class="lang-no">Nødvendige</strong><strong class="lang-sv">Nödvändiga</strong><strong class="lang-en">Necessary</strong>
+          <span class="lang-no">Kreves for at siden skal fungere. Kan ikke deaktiveres.</span>
+          <span class="lang-sv">Krävs för att sidan ska fungera. Kan inte inaktiveras.</span>
+          <span class="lang-en">Required for the site to function. Cannot be disabled.</span>
+        </div>
+        <label class="cookie-toggle"><input type="checkbox" checked disabled /><span class="cookie-toggle-slider"></span></label>
+      </div>
+      <div class="cookie-toggle-row">
+        <div class="cookie-toggle-info">
+          <strong class="lang-no">Analyse (Google Analytics)</strong><strong class="lang-sv">Analys (Google Analytics)</strong><strong class="lang-en">Analytics (Google Analytics)</strong>
+          <span class="lang-no">Hjelper oss forstå hvordan siden brukes, anonymt.</span>
+          <span class="lang-sv">Hjälper oss förstå hur sidan används, anonymt.</span>
+          <span class="lang-en">Helps us understand how the site is used, anonymously.</span>
+        </div>
+        <label class="cookie-toggle"><input type="checkbox" id="consentAnalytics" /><span class="cookie-toggle-slider"></span></label>
+      </div>
+      <div class="cookie-customize-save">
+        <button class="cookie-btn cookie-btn--accept" onclick="dfConsent.saveCustom()">
+          <span class="lang-no">Lagre valg</span><span class="lang-sv">Spara val</span><span class="lang-en">Save preferences</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script src="js/main.js"></script>
+  <script src="js/cookie-consent.js"></script>
   <script>
     var _titles = {
       no: 'Digital web og innovasjon — 3D Fractal',

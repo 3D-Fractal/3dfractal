@@ -1,0 +1,88 @@
+/* ============================================================
+   3D Fractal — Cookie Consent Manager (GDPR / Consent Mode v2)
+   ============================================================ */
+(function () {
+  var STORAGE_KEY = '3df-consent';
+
+  function getConsent() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch (e) { return null; }
+  }
+
+  function saveConsent(obj) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+  }
+
+  function applyConsent(obj) {
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        analytics_storage:  obj.analytics ? 'granted' : 'denied',
+        ad_storage:         'denied',
+        ad_user_data:       'denied',
+        ad_personalization: 'denied'
+      });
+    }
+  }
+
+  function hideBanner() {
+    var b = document.getElementById('cookieBanner');
+    if (!b) return;
+    b.style.opacity = '0';
+    setTimeout(function () { b.style.display = 'none'; }, 300);
+  }
+
+  function showBanner() {
+    var b = document.getElementById('cookieBanner');
+    if (!b) return;
+    b.style.display = 'flex';
+    setTimeout(function () { b.style.opacity = '1'; }, 10);
+  }
+
+  window.dfConsent = {
+    acceptAll: function () {
+      var obj = { analytics: true };
+      saveConsent(obj);
+      applyConsent(obj);
+      hideBanner();
+    },
+
+    rejectAll: function () {
+      var obj = { analytics: false };
+      saveConsent(obj);
+      applyConsent(obj);
+      hideBanner();
+    },
+
+    customize: function () {
+      var panel = document.getElementById('cookieCustomizePanel');
+      if (!panel) return;
+      var isOpen = panel.style.display === 'block';
+      panel.style.display = isOpen ? 'none' : 'block';
+    },
+
+    saveCustom: function () {
+      var el = document.getElementById('consentAnalytics');
+      var obj = { analytics: el ? el.checked : false };
+      saveConsent(obj);
+      applyConsent(obj);
+      hideBanner();
+    },
+
+    openPreferences: function () {
+      showBanner();
+      var panel = document.getElementById('cookieCustomizePanel');
+      if (panel) panel.style.display = 'block';
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var saved = getConsent();
+    if (saved === null) {
+      showBanner();
+    } else {
+      applyConsent(saved);
+      // Pre-check the toggle if analytics was granted
+      var el = document.getElementById('consentAnalytics');
+      if (el && saved.analytics) el.checked = true;
+    }
+  });
+})();
