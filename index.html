@@ -65,18 +65,21 @@
       else if (bl.slice(0,2) === 'sv') lang = 'sv';
       document.documentElement.setAttribute('data-lang', lang);
     })();
-    /* Hide cookie banner before first paint if consent already stored.
-       Falls back to cookie in case iOS Safari WebKit bug cleared localStorage. */
+    /* Hide cookie banner before first paint — read from any of: localStorage,
+       sessionStorage, cookie. Restore the missing ones (self-healing). */
     try {
-      var _cs = localStorage.getItem('3df-consent');
+      var _cs = null;
+      try { _cs = localStorage.getItem('3df-consent'); } catch(e) {}
+      if (!_cs) { try { _cs = sessionStorage.getItem('3df-consent'); } catch(e) {} }
       if (!_cs) {
         var _cm = document.cookie.match('(^|;)\\s*3df-consent=([^;]+)');
-        if (_cm) {
-          _cs = decodeURIComponent(_cm[2]);
-          try { localStorage.setItem('3df-consent', _cs); } catch(e) {} // restore
-        }
+        if (_cm) _cs = decodeURIComponent(_cm[2]);
       }
-      if (_cs) document.documentElement.setAttribute('data-consent', 'given');
+      if (_cs) {
+        document.documentElement.setAttribute('data-consent', 'given');
+        try { if (!localStorage.getItem('3df-consent')) localStorage.setItem('3df-consent', _cs); } catch(e) {}
+        try { if (!sessionStorage.getItem('3df-consent')) sessionStorage.setItem('3df-consent', _cs); } catch(e) {}
+      }
     } catch(e) {}
   </script>
   <link rel="icon" href="icons/favicon.ico" sizes="any">
@@ -106,7 +109,7 @@
   </script>
   <link rel="stylesheet" href="css/style.css?v=5" />
   <link rel="stylesheet" href="css/new.css?v=6" />
-  <link rel="stylesheet" href="css/cookie-consent.css" />
+  <link rel="stylesheet" href="css/cookie-consent.css?v=2" />
   <style>
     /*
       Language switching.
@@ -809,7 +812,7 @@
   </div>
 
   <script src="js/main.js"></script>
-  <script src="js/cookie-consent.js?v=3"></script>
+  <script src="js/cookie-consent.js?v=4"></script>
   <script>
     var _titles = {
       no: '3D Fractal — Digitale produkter, nisjeplattformer og innovasjon',

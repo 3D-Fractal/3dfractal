@@ -4,31 +4,34 @@
 (function () {
   var STORAGE_KEY = '3df-consent';
 
-  /* ── Storage helpers (localStorage + cookie fallback for iOS private) ── */
+  /* ── Storage helpers — try localStorage, sessionStorage, cookie ── */
   function getConsent() {
-    try {
-      var ls = localStorage.getItem(STORAGE_KEY);
-      if (ls) return JSON.parse(ls);
-    } catch (e) {}
-    // Cookie fallback
-    try {
-      var match = document.cookie.match('(^|;)\\s*' + STORAGE_KEY + '=([^;]+)');
-      if (match) return JSON.parse(decodeURIComponent(match[2]));
-    } catch (e) {}
-    return null;
+    var raw = null;
+    try { raw = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+    if (!raw) { try { raw = sessionStorage.getItem(STORAGE_KEY); } catch (e) {} }
+    if (!raw) {
+      try {
+        var m = document.cookie.match('(^|;)\\s*' + STORAGE_KEY + '=([^;]+)');
+        if (m) raw = decodeURIComponent(m[2]);
+      } catch (e) {}
+    }
+    if (!raw) return null;
+    // Self-heal: restore any missing layer
+    try { if (!localStorage.getItem(STORAGE_KEY)) localStorage.setItem(STORAGE_KEY, raw); } catch (e) {}
+    try { if (!sessionStorage.getItem(STORAGE_KEY)) sessionStorage.setItem(STORAGE_KEY, raw); } catch (e) {}
+    try { return JSON.parse(raw); } catch (e) { return null; }
   }
 
   function saveConsent(obj) {
     var val = JSON.stringify(obj);
     try { localStorage.setItem(STORAGE_KEY, val); } catch (e) {}
-    // Cookie fallback — 365 days
+    try { sessionStorage.setItem(STORAGE_KEY, val); } catch (e) {}
     try {
       var exp = new Date();
       exp.setFullYear(exp.getFullYear() + 1);
       document.cookie = STORAGE_KEY + '=' + encodeURIComponent(val) +
         '; expires=' + exp.toUTCString() + '; path=/; SameSite=Lax; Secure';
     } catch (e) {}
-    // Mark html element so CSS can hide banner immediately on next load
     document.documentElement.setAttribute('data-consent', 'given');
   }
 
