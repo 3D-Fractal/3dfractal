@@ -11,11 +11,11 @@
   background: #0f172a;
   border-top: 1px solid rgba(255,255,255,0.1);
   padding: 20px 32px;
+  display: none;
   flex-direction: column;
   gap: 16px;
   opacity: 0;
   transition: opacity 0.3s ease;
-  /* shown via JS: display:flex */
 }
 
 .cookie-banner-main {
