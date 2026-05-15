@@ -95,6 +95,9 @@
   function checkConsent() {
     var saved = getConsent();
     var banner = document.getElementById('cookieBanner');
+    // DEBUG — remove after testing
+    var dbg = document.getElementById('_dbg');
+    if (dbg) dbg.textContent = 'LS=' + localStorage.getItem('3df-consent') + ' | cookie=' + document.cookie;
     if (saved === null) {
       showBanner();
     } else {
