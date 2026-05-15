@@ -202,8 +202,15 @@
 
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .cookie-banner { padding: 16px; }
+  .cookie-banner {
+    padding: 16px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom, 16px));
+  }
   .cookie-banner-main { flex-direction: column; align-items: flex-start; gap: 16px; }
   .cookie-actions { width: 100%; flex-direction: column; }
   .cookie-btn { width: 100%; text-align: center; padding: 11px; }
+  .cookie-pref-btn {
+    bottom: max(20px, calc(env(safe-area-inset-bottom, 0px) + 12px));
+    right: max(20px, calc(env(safe-area-inset-right, 0px) + 12px));
+  }
 }

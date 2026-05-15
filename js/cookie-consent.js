@@ -4,12 +4,30 @@
 (function () {
   var STORAGE_KEY = '3df-consent';
 
+  /* ── Storage helpers (localStorage + cookie fallback for iOS private) ── */
   function getConsent() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch (e) { return null; }
+    try {
+      var ls = localStorage.getItem(STORAGE_KEY);
+      if (ls) return JSON.parse(ls);
+    } catch (e) {}
+    // Cookie fallback
+    try {
+      var match = document.cookie.match('(^|;)\\s*' + STORAGE_KEY + '=([^;]+)');
+      if (match) return JSON.parse(decodeURIComponent(match[2]));
+    } catch (e) {}
+    return null;
   }
 
   function saveConsent(obj) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+    var val = JSON.stringify(obj);
+    try { localStorage.setItem(STORAGE_KEY, val); } catch (e) {}
+    // Cookie fallback — 365 days
+    try {
+      var exp = new Date();
+      exp.setFullYear(exp.getFullYear() + 1);
+      document.cookie = STORAGE_KEY + '=' + encodeURIComponent(val) +
+        '; expires=' + exp.toUTCString() + '; path=/; SameSite=Lax';
+    } catch (e) {}
   }
 
   function applyConsent(obj) {
