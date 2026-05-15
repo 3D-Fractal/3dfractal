@@ -2,6 +2,9 @@
    3D Fractal — Cookie Consent Banner
    ============================================================ */
 
+/* Consent already given — hide banner immediately via CSS, before any JS runs */
+html[data-consent="given"] #cookieBanner { display: none !important; }
+
 .cookie-banner {
   position: fixed;
   bottom: 0;

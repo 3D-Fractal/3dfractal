@@ -28,6 +28,8 @@
       document.cookie = STORAGE_KEY + '=' + encodeURIComponent(val) +
         '; expires=' + exp.toUTCString() + '; path=/; SameSite=Lax';
     } catch (e) {}
+    // Mark html element so CSS can hide banner immediately on next load
+    document.documentElement.setAttribute('data-consent', 'given');
   }
 
   function applyConsent(obj) {

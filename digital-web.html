@@ -53,6 +53,11 @@
       else if (bl.slice(0,2) === 'sv') lang = 'sv';
       document.documentElement.setAttribute('data-lang', lang);
     })();
+    try {
+      if (localStorage.getItem('3df-consent')) {
+        document.documentElement.setAttribute('data-consent', 'given');
+      }
+    } catch(e) {}
   </script>
   <link rel="icon" href="icons/favicon.ico" sizes="any">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
